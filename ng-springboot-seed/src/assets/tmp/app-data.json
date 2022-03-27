@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Spingboot Seed",
+    "description": "Ng-zorro admin panel front-end framework"
+  },
+  "menu": [
+    {
+      "i18n": "一级菜单",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "i18n": "二级菜单-1",
+          "icon": "anticon-info",
+          "children": [
+            {
+              "link": "/dashboard",
+              "i18n": "三级级菜单-1"
+            },
+            {
+              "link": "/dashboard",
+              "i18n": "三级级菜单-2"
+            }
+          ]
+        },
+        {
+          "i18n": "二级菜单-2",
+          "icon": "anticon-info",
+          "children": [
+            {
+              "link": "/dashboard",
+              "i18n": "三级级菜单-1"
+            },
+            {
+              "link": "/dashboard",
+              "i18n": "三级级菜单-2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

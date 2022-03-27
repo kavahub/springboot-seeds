@@ -5,11 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Edge",
+            "request": "launch",
+            "type": "pwa-msedge",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "type": "java",
             "name": "OAuth2Application",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "console": "internalConsole",            
+            "console": "internalConsole",
             "mainClass": "com.springboot.seed.oauth2.OAuth2Application",
             "projectName": "springboot-seed-oauth2-server"
         }

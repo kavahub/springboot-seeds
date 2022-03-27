@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,16 @@ public class OperatorController {
     public ResponseEntity<OperatorVO> save(@RequestBody OperatorVO vo) {
         Operator operator = operatorRepository.save(modelMapper.map(vo, Operator.class));
         return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(operator, OperatorVO.class));
+    }
+
+    @GetMapping("/current")
+    public ResponseEntity<OperatorVO> findCurrent(final Authentication authentication) {
+        final String username = authentication.getName();
+
+        return operatorQueryService.findByUsername(username)
+            .map((e) -> modelMapper.map(e, OperatorVO.class))
+            .map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.notFound().build());    
     }
 
     @GetMapping("/id/{id}")
