@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<server xmlns="urn:jboss:domain:14.0">
+......
+				<datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true">
+					<connection-url>jdbc:mysql://localhost:3306/keycloak?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=GMT%2B8</connection-url>
+					<driver>mysql</driver>
+					<security>
+						<user-name>user1</user-name>
+						<password>user1</password>
+					</security>
+				</datasource>
+                <drivers>
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+					<driver name="mysql" module="com.mysql">
+                       <xa-datasource-class>com.mysql.cj.jdbc.MysqlXADataSource</xa-datasource-class>
+                   </driver>
+                </drivers>
+......
+</server>
