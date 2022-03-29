@@ -33,7 +33,7 @@ export class StartupService {
 
 
   load(): Observable<void> {
-    return zip(this.httpClient.get('assets/tmp/app-data.json'), this.httpClient.get('/auth/operators/current')).pipe(
+    return zip(this.httpClient.get('assets/tmp/app-data.json'), this.httpClient.get('/auth/v1/operators/current')).pipe(
       // 接收其他拦截器后产生的异常消息
       catchError((res: NzSafeAny) => {
         console.warn(`StartupService.load: Network request failed`, res);
