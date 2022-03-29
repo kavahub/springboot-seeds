@@ -15,27 +15,27 @@ import org.springframework.data.domain.Pageable;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class OperatorQueryServiceTests {
+public class OperatorQueryHandlerTests {
     @Autowired
     private OperatorRepository operatorRepository;
     @Autowired
-    private OperatorQueryService operatorQueryService;
+    private OperatorQueryHandler operatorQueryHandler;
 
     private final static String USERNAME = "mock";
 
     @BeforeAll
     public void beforeEach() {
-        operatorRepository.save(new Operator(USERNAME, "example", "example@qq.com"));
+        operatorRepository.save(new Operator(USERNAME, "example", "example@qq.com", "17000000000"));
     }
 
     @Test
     public void giveWrongId_whenFindById_thenEntityNotFoundException(){
-        assertThrows(EntityNotFoundException.class, () -> operatorQueryService.findById("wrongId"));
+        assertThrows(EntityNotFoundException.class, () -> operatorQueryHandler.findById("wrongId"));
     }
 
     @Test
     public void giveNickname_whenFindByPage_thenOk() {
-        Page<Operator> page = operatorQueryService.findByPage("examp", Pageable.ofSize(10));
+        Page<Operator> page = operatorQueryHandler.findByPage("examp", Pageable.ofSize(10));
 
         assertThat(page).isNotNull();
         assertThat(page.getTotalElements()).isEqualTo(1l);

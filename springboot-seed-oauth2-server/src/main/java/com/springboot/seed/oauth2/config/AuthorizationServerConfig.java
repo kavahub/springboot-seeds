@@ -2,7 +2,7 @@ package com.springboot.seed.oauth2.config;
 
 import java.util.Arrays;
 
-import com.springboot.seed.oauth2.operator.OperatorQueryService;
+import com.springboot.seed.oauth2.operator.OperatorQueryHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +31,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
     @Autowired
     private TokenStore tokenStore;
     @Autowired
-    private OperatorQueryService operatorQueryService;
+    private OperatorQueryHandler operatorQueryHandler;
     @Autowired
     private JwtAccessTokenConverter accessTokenConverter;
     @Autowired
@@ -68,6 +68,6 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
 
     @Bean
     public TokenEnhancer tokenEnhancer() {
-        return new CustomTokenEnhancer(operatorQueryService);
+        return new CustomTokenEnhancer(operatorQueryHandler);
     }
 }

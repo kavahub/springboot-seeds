@@ -21,7 +21,7 @@ public class OperatorRepositoryTests {
 
     @Test
     public void whenFindByName_thenReturnOperator() {
-        Operator alex = new Operator("alex", "alex", "alex@qq.com");
+        Operator alex = new Operator("alex");
         entityManager.persistAndFlush(alex);
 
         Operator found = operatorRepository.findByUsernameIgnoreCase(alex.getUsername());
@@ -36,10 +36,10 @@ public class OperatorRepositoryTests {
 
     @Test
     public void givenSameUsername_whenSave_thenPersistenceException() {
-        Operator alex1 = new Operator("alex", "alex", "alex@qq.com");
+        Operator alex1 = new Operator("alex");
         operatorRepository.save(alex1);
 
-        Operator alex2 = new Operator("alex", "alex", "alex@qq.com");
+        Operator alex2 = new Operator("alex");
         operatorRepository.save(alex2);
         assertThrows(PersistenceException.class, () -> entityManager.flush());
     }

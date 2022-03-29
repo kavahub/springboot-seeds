@@ -4,6 +4,19 @@ server:
 spring:
   application:
     name: springboot-seed-oauth2
+  # JPA配置
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    format-sql: true
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+       ddl-auto: update
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/seeds?characterEncoding=utf-8&useSSL=true
+    username: seeds
+    password: seeds        
   # 缓存设置  
   cache:
     type: redis

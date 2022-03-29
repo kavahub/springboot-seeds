@@ -28,9 +28,9 @@ public class TestDataRunner implements CommandLineRunner  {
         List<Operator> operators = operatorRepository.findAll();
         if (operators.isEmpty()) {
             log.info("生成演示数据...");
-            operators.add(new Operator("zhangs", "张三", "zhangs@qq.com"));
-            operators.add(new Operator("lis", "李四", "lis@qq.com"));
-            operators.add(new Operator("wangw", "王五", "wangw@qq.com"));
+            operators.add(new Operator("zhangs", "张三", "zhangs@qq.com", "17000000001"));
+            operators.add(new Operator("lis", "李四", "lis@qq.com", "17000000002"));
+            operators.add(new Operator("wangw", "王五", "wangw@qq.com", "17000000003"));
 
             operators.forEach(e -> e.setPassword(passwordEncoder.encode("123")));
             operatorRepository.saveAll(operators);

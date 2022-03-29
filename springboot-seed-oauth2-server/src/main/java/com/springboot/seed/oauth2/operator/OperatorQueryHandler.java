@@ -16,10 +16,10 @@ import org.springframework.util.StringUtils;
 import lombok.experimental.UtilityClass;
 
 @Service
-public class OperatorQueryService {
+public class OperatorQueryHandler {
     private final OperatorRepository operatorRepository;
 
-    public OperatorQueryService(OperatorRepository operatorRepository) {
+    public OperatorQueryHandler(OperatorRepository operatorRepository) {
         this.operatorRepository = operatorRepository;
     }
 

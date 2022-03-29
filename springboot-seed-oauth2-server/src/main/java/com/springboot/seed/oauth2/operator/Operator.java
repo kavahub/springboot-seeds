@@ -36,24 +36,33 @@ public class Operator implements Serializable {
     private String username;
 
     /** 密码 */
-    @Column(length = 255)
+    @Column
     private String password;
 
     /** 昵称 */
-    @Column(length = 255, nullable = false)
+    @Column
     private String nickname;
 
     /** 邮箱 */
-    @Column(length = 255, nullable = false)
+    @Column
     private String email;
+
+    /** 手机号 */
+    @Column
+    private String phoneNumber;
 
     public Operator() {
     }
 
-    public Operator(String username, String nickname, String email) {
+    public Operator(String username) {
+        this.username = username;
+    }
+
+    public Operator(String username, String nickname, String email, String phoneNumber) {
         this.username = username;
         this.email = email;
         this.nickname = nickname;
+        this.phoneNumber = phoneNumber;
     }
 
     @PrePersist
