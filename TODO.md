@@ -7,6 +7,8 @@
 - [] ~~springboot-seed-mail-server
 - [x] ~~springboot-seed-oauth2-server
 - [] ~~springboot-seed-social-server
+- [] ~~springboot-seed-common
+- [] ~~springboot-seed-activiti-server
 
 ## 备注
 
