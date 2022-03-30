@@ -1,9 +1,15 @@
 package com.springboot.seed.oauth2.config;
 
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
@@ -32,5 +38,18 @@ public class BeansConfig {
                 "7WWundC8gVH1Qc1O".toCharArray());
         converter.setKeyPair(keyStoreKeyFactory.getKeyPair("springboot-seeds"));
         return converter;
+    }
+
+    /**
+     * 自定义缓存过期时间
+     * @return
+     */
+    @Bean
+    public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
+        return (builder) -> {
+            Map<String, RedisCacheConfiguration> configurationMap = new HashMap<>();
+            configurationMap.put("entitycache-operators", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(1)));   
+            builder.withInitialCacheConfigurations(configurationMap);
+        };
     }
 }

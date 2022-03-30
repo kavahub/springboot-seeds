@@ -12,7 +12,7 @@ spring:
     open-in-view: false
     generate-ddl: true
     hibernate:
-       ddl-auto: update
+       ddl-auto: create
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/seeds?characterEncoding=utf-8&useSSL=true
     username: seeds
