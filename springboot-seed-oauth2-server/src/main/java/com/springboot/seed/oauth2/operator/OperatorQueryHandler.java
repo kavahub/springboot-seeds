@@ -24,7 +24,7 @@ public class OperatorQueryHandler {
     }
 
     public Operator findById(final String id) {
-        return operatorRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not foud by id:" + id));
+        return operatorRepository.findById(id).orElseThrow(() -> new OperatorNotFoundExcepiton(id));
     }
 
     public Optional<Operator> findByUsername(final String username) {

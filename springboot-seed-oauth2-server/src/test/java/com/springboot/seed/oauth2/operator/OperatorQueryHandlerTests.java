@@ -3,8 +3,6 @@ package com.springboot.seed.oauth2.operator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -30,7 +28,7 @@ public class OperatorQueryHandlerTests {
 
     @Test
     public void giveWrongId_whenFindById_thenEntityNotFoundException(){
-        assertThrows(EntityNotFoundException.class, () -> operatorQueryHandler.findById("wrongId"));
+        assertThrows(OperatorNotFoundExcepiton.class, () -> operatorQueryHandler.findById("wrongId"));
     }
 
     @Test

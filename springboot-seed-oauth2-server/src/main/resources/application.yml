@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: springboot-seed-oauth2
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
   # JPA配置
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect

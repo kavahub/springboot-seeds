@@ -1,7 +1,5 @@
 package com.springboot.seed.oauth2.operator;
 
-import com.springboot.seed.common.util.CommonRuntimeException;
-
 import org.springframework.stereotype.Service;
 
 import cn.hutool.core.lang.Validator;
@@ -18,12 +16,12 @@ public class OperatorSaveHandler {
     public Operator save(final Operator needToSave) {
         final String phoneNumber = needToSave.getPhoneNumber();
         if (StrUtil.isNotBlank(phoneNumber) && !Validator.isMobile(phoneNumber)) {
-            throw new CommonRuntimeException("手机号格式错误：" + phoneNumber);
+            throw new PhoneNumberValidateExcepiton(phoneNumber);
         }
 
         final String email = needToSave.getEmail();
         if (StrUtil.isNotBlank(email) && !Validator.isEmail(email)) {
-            throw new CommonRuntimeException("邮箱格式错误：" + phoneNumber);
+            throw new EmailValidateExcepiton(email);
         }
 
         return operatorRepository.save(needToSave);
